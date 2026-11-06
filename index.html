@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katrin Barshe</title>
+  <meta name="description" content="Paintings by Katrin Barshe: shells, components, impossible objects. Melbourne, Florida.">
+  <meta property="og:title" content="Katrin Barshe">
+  <meta property="og:image" content="assets/img/shell-13.jpg">
+  <link rel="icon" href="assets/img/logo-kd.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Barlow:wght@300;400&family=Nunito:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="logo-bar">
+  <a href="index.html"><img class="logo" src="assets/img/logo-kd.png" alt="Katrin Barshe"></a>
+</div>
+<nav class="navbar" aria-label="Main">
+  <a href="index.html" aria-current="page">art</a>
+  <a href="info.html">info</a>
+  <a href="https://katrinbarshe.printful.me/">shop</a>
+</nav>
+
+<main>
+
+  <section class="slider" aria-label="Paintings in a gallery">
+    <img class="slide-img is-on" src="assets/img/hero-1.jpg" alt="">
+    <img class="slide-img" src="assets/img/hero-2.jpg" alt="">
+    <img class="slide-img" src="assets/img/hero-3.jpg" alt="">
+    <button class="arrow prev" type="button" aria-label="Previous image">&#8249;</button>
+    <button class="arrow next" type="button" aria-label="Next image">&#8250;</button>
+  </section>
+
+  <section class="dark">
+    <div class="wrap intro">
+      <img src="assets/img/shell-intro.png" alt="Shell painting in a frame">
+      <div class="intro-text">
+        <h1 class="h-big">The Shell</h1>
+        <p class="sub">The Secrets of Eternal Shells</p>
+        <p>Florida has captivated me with its hidden and vivid beauty. Nature here is rich with symbols and meanings, revealing themselves to those who take the time to notice. The central theme of my work is shells — traces of ancient seas, frozen in time. Millions of years old, fossilized, yet still preserving their elegance.</p>
+        <p>A shell is a mystery, one that each person deciphers in their own way. It holds the mathematical harmony of Fibonacci, the precision and logic of architecture, and reflections of human nature. It embodies the relentless passage of time while safeguarding the secret of eternal beauty. Feminine curves and phallic forms merge in this symbol, balancing fragility and resilience.</p>
+        <p>I do not offer direct hints, only space for contemplation. Each painting carries its own emotion, its own shade of meaning, inviting the viewer to find something deeply personal within. These fossilized forms, once shaped by the tides, now exist as artifacts of eternity, whispering their silent stories. Through my work, I seek to preserve that dialogue between past and present, nature and art, allowing each observer to uncover their own connection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="shells">
+    <div class="wrap rows rows-bottom" data-series="shells" data-layout="rows"></div>
+  </section>
+
+  <section class="banner" style="background-image:url('assets/img/banner-components.jpg')">
+    <h2 class="h-big">Components</h2>
+  </section>
+
+  <section class="dark" id="components">
+    <div class="wrap rows rows-center" data-series="components" data-layout="rows"></div>
+  </section>
+
+  <section class="gray" id="impossible">
+    <div class="wrap intro intro-io">
+      <img src="assets/img/impossible-intro.png" alt="Impossible object painting on an easel">
+      <h2 class="h-mid">Impossible objects</h2>
+    </div>
+    <div class="wrap tiles" data-series="impossible" data-layout="tiles"></div>
+  </section>
+
+  <section class="banner" style="background-image:url('assets/img/banner-out-of-series.jpg')">
+    <h2 class="h-big">Out of series</h2>
+  </section>
+
+  <section class="dark" id="other">
+    <div class="wrap tiles" data-series="other" data-layout="tiles"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2022-2026 Katrin Barshe</p>
+</footer>
+
+<script src="works.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

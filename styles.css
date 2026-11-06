@@ -1,0 +1,204 @@
+/* Katrin Barshe: copy of the original Strikingly design */
+
+:root {
+  --dark: #1c1c1c;
+  --gray: #77797a;
+  --nav: #667788;
+  --info-text: #6a7a8b;
+  --wrap: 918px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #fff;
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.45;
+}
+img { display: block; max-width: 100%; height: auto; }
+a:focus-visible, button:focus-visible { outline: 2px solid #e8eaec; outline-offset: 3px; }
+
+.wrap { width: min(var(--wrap), calc(100% - 40px)); margin: 0 auto; }
+
+/* ---------- header ---------- */
+
+.logo-bar { background: #fff; text-align: center; padding: 28px 0 10px; }
+.logo { display: inline-block; width: 64px; }
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  padding: 18px 0 22px;
+  font-family: "Gotham Rounded", "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.navbar a { color: var(--nav); text-decoration: none; }
+.navbar a:hover { color: #334455; }
+
+/* ---------- slider ---------- */
+
+.slider {
+  position: relative;
+  height: min(59vw, 760px);
+  overflow: hidden;
+  background: #fff;
+}
+.slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.slide-img.is-on { opacity: 1; }
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 56px;
+  line-height: 1;
+  padding: 10px 18px;
+  cursor: pointer;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ---------- headings ---------- */
+
+.h-big, .h-mid, .work-title, .sub, .intro-text p {
+  font-family: "Amaranth", sans-serif;
+  font-weight: 400;
+}
+.h-big { font-size: 48px; line-height: 1.3; margin: 0; }
+.h-mid { font-size: 36px; line-height: 1.2; margin: 0; }
+
+/* ---------- sections ---------- */
+
+.dark { background: var(--dark); padding: 40px 0; }
+.gray { background: var(--gray); padding: 40px 0 60px; }
+
+.intro {
+  display: grid;
+  grid-template-columns: 446px 1fr;
+  gap: 26px;
+  align-items: center;
+  padding: 20px 0;
+}
+.intro-text .sub { font-size: 16px; margin: 0 0 22px; }
+.intro-text p { font-size: 14px; line-height: 1.55; margin: 0 0 18px; }
+.intro-io { margin-bottom: 30px; }
+
+.banner {
+  height: min(50vw, 640px);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.banner .h-big { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35); }
+
+/* ---------- rows: image and text side by side, alternating ---------- */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid #000;
+  margin-bottom: 20px;
+}
+.row-img img { width: 100%; }
+.row-text {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 14px;
+}
+.rows-bottom .row-text { justify-content: flex-end; padding-bottom: 40px; }
+.rows-center .row-text { justify-content: center; }
+.img-right .row-img { order: 2; }
+
+/* ---------- tiles: two columns, centered captions ---------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 54px;
+  align-items: end;
+}
+.tile { text-align: center; }
+.tile img { width: 100%; }
+.tile-text { padding-top: 14px; }
+.tile:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 27px); margin: 0 auto; }
+
+/* ---------- work info ---------- */
+
+.work-title { font-size: 24px; line-height: 1.45; margin: 0 0 10px; }
+.work-meta { margin: 0; }
+.work-price { margin: 8px 0 0; font-weight: 400; }
+.work-actions { margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.tile .work-actions { justify-content: center; }
+
+.pill {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+}
+.pill:hover { background: #fff; color: var(--dark); }
+
+/* ---------- info page ---------- */
+
+.info { background: #fff; color: var(--info-text); padding: 40px 0 80px; }
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.info-text p { margin: 0 0 18px; }
+.info-text a { color: #555; }
+.info-banner { height: 281px; background-size: cover; background-position: center; }
+
+/* ---------- footer ---------- */
+
+.footer {
+  background: var(--dark);
+  border-top: 1px solid #555;
+  text-align: center;
+  padding: 60px 20px;
+}
+.footer p { margin: 0; }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 760px) {
+  .intro, .row, .tiles, .info-grid { grid-template-columns: 1fr; }
+  .img-right .row-img { order: 0; }
+  .rows-bottom .row-text { padding-bottom: 24px; }
+  .tile:last-child:nth-child(odd) { width: 100%; }
+  .h-big { font-size: 38px; }
+}
