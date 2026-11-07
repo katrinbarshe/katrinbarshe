@@ -252,7 +252,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #e8eaec; outline-offs
 .series-nav a[aria-current="page"] { color: #222; border-bottom-color: #e4003a; }
 .navbar a[aria-current="page"] { color: #222; }
 .io-top { padding: 30px 0; }
-.io-top .intro-io { margin-bottom: 0; }
+.io-top .intro-io { margin-bottom: 0; grid-template-columns: 1fr; justify-items: center; }
+.io-top .intro-io img { width: 446px; }
 
 /* hidden from view, still read by search engines and screen readers */
 .visually-hidden {
@@ -261,6 +262,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid #e8eaec; outline-offs
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* ---------- white section (Components) ---------- */
+
+.light { background: #f2f2f2; color: #222; padding: 40px 0 60px; }
+.light .pill { border-color: #222; color: #222; }
+.light .pill:hover { background: #222; color: #fff; }
+
+/* ---------- two photos side by side instead of a banner (Impossible objects) ---------- */
+
+.banner-pair {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: min(50vw, 640px);
+  overflow: hidden;
+}
+.banner-four {
+  grid-template-columns: repeat(4, 1fr);
+  height: auto;                      /* follow the photos, no cropping */
+  max-width: 1440px;                 /* keeps the strip from getting too tall on wide screens */
+  margin: 0 auto;
+}
+.banner-four img { height: auto; object-fit: initial; }
+.banner-four-wrap { background: #292929; position: relative; }
+.banner-four::after { display: none; }
+.banner-four-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 22px 28px -14px rgba(0, 0, 0, 0.6),
+    inset 0 -22px 28px -14px rgba(0, 0, 0, 0.6);
+}
+.banner-pair img { width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.banner-pair::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 22px 28px -14px rgba(0, 0, 0, 0.6),
+    inset 0 -22px 28px -14px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------- small screens ---------- */
