@@ -193,6 +193,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid #e8eaec; outline-offs
 }
 .footer p { margin: 0; }
 
+/* ---------- parallax (see parallax.js) ---------- */
+
+.has-parallax { position: relative; overflow: hidden; }
+.parallax-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -25%;
+  height: 150%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  z-index: 0;
+}
+.has-parallax > :not(.parallax-layer) { position: relative; z-index: 1; }
+
 /* ---------- small screens ---------- */
 
 @media (max-width: 760px) {
