@@ -17,14 +17,14 @@
 </head>
 <body>
 
-<div class="logo-bar">
-  <a href="index.html"><img class="logo" src="assets/img/logo-kd.png" alt="Katrin Barshe"></a>
-</div>
-<nav class="navbar" aria-label="Main">
-  <a href="index.html" aria-current="page">art</a>
-  <a href="info.html">info</a>
-  <a href="https://katrinbarshe.printful.me/">shop</a>
-</nav>
+<header class="topbar">
+  <a class="topbar-logo" href="index.html"><img class="logo" src="assets/img/favicon.png" alt="Katrin Barshe"></a>
+  <nav class="navbar" aria-label="Main">
+    <a href="index.html" aria-current="page">art</a>
+    <a href="info.html">info</a>
+    <a href="https://katrinbarshe.printful.me/">shop</a>
+  </nav>
+</header>
 
 <main>
 
@@ -35,6 +35,13 @@
     <button class="arrow prev" type="button" aria-label="Previous image">&#8249;</button>
     <button class="arrow next" type="button" aria-label="Next image">&#8250;</button>
   </section>
+
+  <nav class="series-nav" aria-label="Series">
+    <a href="index.html" aria-current="page">The Shells</a>
+    <a href="components.html">Components</a>
+    <a href="impossible-objects.html">Impossible objects</a>
+    <a href="out-of-series.html">Out of series</a>
+  </nav>
 
   <section class="dark">
     <div class="wrap intro">
@@ -50,31 +57,7 @@
   </section>
 
   <section class="dark" id="shells">
-    <div class="wrap rows rows-bottom" data-series="shells" data-layout="rows"></div>
-  </section>
-
-  <section class="banner" style="background-image:url('assets/img/banner-components.jpg')">
-    <h2 class="h-big">Components</h2>
-  </section>
-
-  <section class="dark" id="components">
-    <div class="wrap rows rows-center" data-series="components" data-layout="rows"></div>
-  </section>
-
-  <section class="gray" id="impossible">
-    <div class="wrap intro intro-io">
-      <img src="assets/img/impossible-intro.png" alt="Impossible object painting on an easel">
-      <h2 class="h-mid">Impossible objects</h2>
-    </div>
-    <div class="wrap tiles" data-series="impossible" data-layout="tiles"></div>
-  </section>
-
-  <section class="banner" style="background-image:url('assets/img/banner-out-of-series.jpg')">
-    <h2 class="h-big">Out of series</h2>
-  </section>
-
-  <section class="dark" id="other">
-    <div class="wrap tiles" data-series="other" data-layout="tiles"></div>
+    <div class="wrap tiles" data-series="shells" data-layout="tiles"></div>
   </section>
 
 </main>

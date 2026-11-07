@@ -5,7 +5,9 @@ Design copies the old Strikingly site.
 
 ## Files
 
-- `index.html` - home page (art)
+- `index.html` - home page = Shells series (gallery slider, The Shell intro, shells)
+- `components.html`, `impossible-objects.html`, `out-of-series.html` - one page per series, each with its own banner
+- `parallax.js` - parallax on banners and the top slider
 - `info.html` - info page
 - `assets/img/` - all images
 - `works.js` — **all artworks**: titles, sizes, images, prices, buy links. Edit this file to change prices or mark a work as sold.

@@ -18,12 +18,34 @@
     el.prepend(layer);
     items.push({ el, layer });
   });
+
+  // Top slider: the photos slide down slower than the page as you scroll.
+  // A softer speed here keeps the photo framing close to the original.
+  const SLIDER_SPEED = 0.25;
+  const slider = document.querySelector(".slider");
+  if (slider) {
+    const imgs = slider.querySelectorAll(".slide-img");
+    let start = 0;
+    const sizeSlider = () => {
+      start = slider.getBoundingClientRect().top + window.scrollY;
+      const extra = Math.ceil((slider.offsetHeight + start) * SLIDER_SPEED) + 2;
+      imgs.forEach(img => { img.style.top = -extra + "px"; img.style.height = slider.offsetHeight + extra + "px"; });
+    };
+    const moveSlider = () => {
+      const r = slider.getBoundingClientRect();
+      if (r.bottom < 0) return;
+      const offset = (start - r.top) * SLIDER_SPEED; // = how far the page has scrolled past the start
+      imgs.forEach(img => { img.style.transform = "translate3d(0," + offset.toFixed(1) + "px,0)"; });
+    };
+    items.push({ custom: true, size: sizeSlider, move: moveSlider });
+  }
   if (!items.length) return;
 
   // Make each layer tall enough that its edges never show while it moves.
   function size() {
     const vh = window.innerHeight;
-    items.forEach(({ el, layer }) => {
+    items.forEach(({ el, layer, custom, size }) => {
+      if (custom) { size(); return; }
       const h = el.offsetHeight;
       const extra = Math.ceil((vh / 2 + h / 2) * SPEED) + 2;
       layer.style.top = -extra + "px";
@@ -34,7 +56,8 @@
   let ticking = false;
   function update() {
     const vh = window.innerHeight;
-    items.forEach(({ el, layer }) => {
+    items.forEach(({ el, layer, custom, move }) => {
+      if (custom) { move(); return; }
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
       // distance of the section center from the screen center
