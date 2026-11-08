@@ -71,5 +71,5 @@ const WORKS = [
     original: { status: "available", price: "$720", buyUrl: "https://square.link/u/8K3Lxwgl" }, print: { url: "" } },
   { series: "other", title: "The Heels", size: "18\"x24\", Canvas Board, Acrylic/Oil", date: "2024", img: IMG + "the-heels.jpg",
     gallery: [G + "the-heels-1.jpg", G + "the-heels-2.jpg", G + "the-heels-3.jpg"],
-    original: { status: "available", price: "$840", buyUrl: "https://square.link/u/0IDRuLFX" }, print: { url: "" } },
+    original: { status: "available", price: "$780", buyUrl: "https://square.link/u/0IDRuLFX" }, print: { url: "" } },
 ];
