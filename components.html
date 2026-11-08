@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" id="top">
   <a class="topbar-logo" href="index.html"><img class="logo" src="assets/img/favicon.png" alt="Katrin Barshe"></a>
   <nav class="navbar" aria-label="Main">
     <a href="index.html" aria-current="page">art</a>
@@ -28,7 +28,11 @@
 
 <main>
 
-  <section class="banner" style="background-image:url('assets/img/banner-components.jpg')">
+  <section class="slider fit-slider" aria-label="Studio and Components watercolors">
+    <img class="slide-img is-on" src="assets/img/banner-studio.jpg" data-ratio="2.2222" alt="Katrin Barshe's studio with Components watercolors">
+    <img class="slide-img" src="assets/img/banner-components.jpg" data-ratio="2.4012" alt="Components watercolors">
+    <button class="arrow prev" type="button" aria-label="Previous image">&#8249;</button>
+    <button class="arrow next" type="button" aria-label="Next image">&#8250;</button>
     <h1 class="visually-hidden">Components</h1>
   </section>
 
@@ -47,6 +51,7 @@
 
 <footer class="footer">
   <p>© 2022-2026 Katrin Barshe</p>
+  <a href="#top" class="back-to-top" aria-label="Back to top">&#8593;</a>
 </footer>
 
 <script src="works.js"></script>

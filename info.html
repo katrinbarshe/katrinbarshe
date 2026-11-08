@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" id="top">
   <a class="topbar-logo" href="index.html"><img class="logo" src="assets/img/favicon.png" alt="Katrin Barshe"></a>
   <nav class="navbar" aria-label="Main">
     <a href="index.html">art</a>
@@ -37,13 +37,30 @@
       </div>
     </div>
   </section>
-  <section class="info-banner" style="background-image:url('assets/img/info-banner.jpg')"></section>
+  <section class="info-map" style="background-image:url('assets/img/info-florida-map.jpg')" role="img" aria-label="Map of Florida with a marker at Melbourne, Florida"></section>
 </main>
 
 <footer class="footer">
   <p>© 2022-2026 Katrin Barshe</p>
+  <a href="#top" class="back-to-top" aria-label="Back to top">&#8593;</a>
 </footer>
 
+<script>
+  // Make the photo exactly as tall as the text next to it (desktop only).
+  (function () {
+    const img = document.querySelector(".info-grid > img");
+    const text = document.querySelector(".info-text");
+    if (!img || !text) return;
+    function fit() {
+      if (window.innerWidth <= 760) { img.style.height = ""; img.style.width = ""; return; }
+      img.style.height = text.offsetHeight + "px";
+      img.style.width = "auto";
+    }
+    window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
+    fit();
+  })();
+</script>
 <script src="parallax.js"></script>
 </body>
 </html>

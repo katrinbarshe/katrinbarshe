@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" id="top">
   <a class="topbar-logo" href="index.html"><img class="logo" src="assets/img/favicon.png" alt="Katrin Barshe"></a>
   <nav class="navbar" aria-label="Main">
     <a href="index.html" aria-current="page">art</a>
@@ -28,7 +28,11 @@
 
 <main>
 
-  <section class="banner" style="background-image:url('assets/img/banner-out-of-series.jpg')">
+  <section class="slider fit-slider" aria-label="Paintings out of series">
+    <img class="slide-img is-on" src="assets/img/out-20241124_162349.jpg" data-ratio="2.2222" alt="">
+    <img class="slide-img" src="assets/img/out-20241124_171853.jpg" data-ratio="2.2222" alt="">
+    <button class="arrow prev" type="button" aria-label="Previous image">&#8249;</button>
+    <button class="arrow next" type="button" aria-label="Next image">&#8250;</button>
     <h1 class="visually-hidden">Out of series</h1>
   </section>
 
@@ -47,6 +51,7 @@
 
 <footer class="footer">
   <p>© 2022-2026 Katrin Barshe</p>
+  <a href="#top" class="back-to-top" aria-label="Back to top">&#8593;</a>
 </footer>
 
 <script src="works.js"></script>
