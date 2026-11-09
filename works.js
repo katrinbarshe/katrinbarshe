@@ -37,13 +37,13 @@ const WORKS = [
   // ---------- Components ----------
   { series: "components", title: "LED", size: "9\"x12\", Paper, Watercolor", date: "2024", img: IMG + "led.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/4sa7e81K" },
-    print: { url: "https://katrinbarshe.printful.me/product/rgb-led-framed-poster-67d6ff147eb91" } },
+    print: { url: "https://katrinbarshe.printful.me/product/rgb-led-framed-print-with-mat" } },
   { series: "components", title: "Resistor", size: "9\"x12\", Paper, Watercolor", date: "2024", img: IMG + "resistor.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/MQieKmev" },
-    print: { url: "https://katrinbarshe.printful.me/product/resistor-framed-photo-paper-poster" } },
+    print: { url: "https://katrinbarshe.printful.me/product/resistor-framed-print-with-mat" } },
   { series: "components", title: "Capacitor", size: "9\"x12\", Paper, Watercolor", date: "2024", img: IMG + "capacitor.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/mnhAo3ao" },
-    print: { url: "https://katrinbarshe.printful.me/product/capacitor-framed-poster-67d70257920ec" } },
+    print: { url: "https://katrinbarshe.printful.me/product/capacitor-framed-print-with-mat" } },
 
   // ---------- Impossible objects ----------
   { series: "impossible", title: "IO #1. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-1.jpg",
