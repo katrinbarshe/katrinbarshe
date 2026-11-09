@@ -19,10 +19,15 @@
 
     if (o.status === "sold") price = '<p class="work-price">Original sold</p>';
     if (o.status === "available" && o.price) {
-      price = '<p class="work-price">Original ' + esc(o.price) + "</p>";
       buttons += '<a class="pill" href="' + esc(o.buyUrl || mail(w.title, "Buy original")) + '"' + (o.buyUrl ? ' target="_blank" rel="noopener"' : '') + '>Buy original</a>';
     }
     if (p.url) buttons = '<a class="pill" href="' + esc(p.url) + '" target="_blank" rel="noopener">Buy print</a>' + buttons;
+    // Several print options (e.g. canvas and framed): one button each, with its price.
+    if (p.options && p.options.length) {
+      buttons += p.options.map(function (x) {
+        return '<a class="pill" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.label) + "</a>";
+      }).join("");
+    }
     if (!buttons) buttons = '<a class="pill" href="' + esc(mail(w.title, "About the painting")) + '">Ask about this work</a>';
 
     return (

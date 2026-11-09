@@ -3,11 +3,13 @@
   To change a price, mark a work as sold, or add a buy link, edit this file only.
 
   original.status:
-    "available" - shows the price and a "Buy original" button
+    "available" - shows a "Buy original" button (price is kept here for reference)
     "sold"      - shows "Sold"
     "inquire"   - no price yet, shows "Ask about this work" (opens an email)
   original.buyUrl: Square payment link for this painting. Leave "" to open an email instead.
   print.url: link to the print in the Printful shop. Leave "" if there is no print yet.
+  print.options: several prints instead of one link, e.g. canvas and framed:
+           [{ label: "Canvas print", price: "$195", url: "https://..." }, ...]
   date: the text shown under the size, exactly as on the old site.
   gallery: optional list of photos shown (with arrows) when the painting is clicked.
            Without it, a click just opens the main image larger.
@@ -22,17 +24,29 @@ const G = "assets/img/gallery/";  // extra photos shown when a painting is click
 const WORKS = [
   // ---------- Shells ----------
   { series: "shells", title: "Shell #13", size: "48\"x30\", Canvas Board, Acrylic", date: "January 2025", img: IMG + "shell-13.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/gYisIzdt" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/gYisIzdt" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-13-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-13-framed-print-16x20" } ] } },
   { series: "shells", title: "Shell #12", size: "48\"x30\", Canvas Board, Acrylic", date: "December 2024", img: IMG + "shell-12.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/aWwoPTjT" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/aWwoPTjT" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-12-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-12-framed-print-16x20" } ] } },
   { series: "shells", title: "Shell #10", size: "48\"x30\", Canvas Board, Acrylic", date: "March 2024", img: IMG + "shell-10.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/2oJT8fPG" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/2oJT8fPG" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-10-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-10-framed-print-16x20" } ] } },
   { series: "shells", title: "Shell #9", size: "48\"x30\", Canvas Board, Acrylic", date: "February 2024", img: IMG + "shell-9.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/W93OH04N" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/W93OH04N" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-9-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-9-framed-print-16x20" } ] } },
   { series: "shells", title: "Shell #8. Angel", size: "48\"x30\", Canvas Board, Acrylic", date: "December 2023", img: IMG + "shell-8.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/lRjy4vNY" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/lRjy4vNY" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-8-angel-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-8-angel-framed-print-16x20" } ] } },
   { series: "shells", title: "Shell #7", size: "48\"x30\", Canvas Board, Acrylic", date: "December 2023", img: IMG + "shell-7.jpg",
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/NFxMN0wt" }, print: { url: "" } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/NFxMN0wt" }, print: { options: [
+      { label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/shell-7-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/shell-7-framed-print-16x20" } ] } },
 
   // ---------- Components ----------
   { series: "components", title: "LED", size: "9\"x12\", Paper, Watercolor", date: "2024", img: IMG + "led.jpg",
