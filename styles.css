@@ -391,3 +391,10 @@ body.lb-open { overflow: hidden; }
   .lb-prev, .lb-next { font-size: 40px; top: auto; bottom: 6px; transform: none; }
 }
 .lightbox button:focus:not(:focus-visible) { outline: none; }
+
+/* ---------- no empty strip under the footer on short pages ---------- */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+body > main { flex: 1 0 auto; }
+/* info page: the map takes the leftover height */
+main:has(> .info-map) { display: flex; flex-direction: column; }
+main > .info-map { flex: 1 0 auto; }
