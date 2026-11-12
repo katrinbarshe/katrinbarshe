@@ -139,18 +139,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid #e8eaec; outline-offs
 .rows-center .row-text { justify-content: center; }
 .img-right .row-img { order: 2; }
 
-/* ---------- tiles: two columns, centered captions ---------- */
+/* ---------- tiles: flexible columns, centered captions ---------- */
 
+/* As many columns as fit: 1 on phones, 2 on tablets, 3-4 on wide screens.
+   Each tile stays about 380px wide so the 620px images stay sharp;
+   an unfinished last row is centered. */
+.tiles.wrap { width: min(1800px, calc(100% - 40px)); }
 .tiles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 54px;
-  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: flex-end;
 }
-.tile { text-align: center; }
+.tile { flex: 0 1 380px; text-align: center; }
 .tile img { width: 100%; }
 .tile-text { padding-top: 14px; }
-.tile:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 27px); margin: 0 auto; }
 
 /* ---------- work info ---------- */
 
