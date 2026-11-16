@@ -6,7 +6,7 @@ Design copies the old Strikingly site.
 ## Files
 
 - `index.html` - home page = Shells series (gallery slider, The Shell intro, shells)
-- `components.html`, `impossible-objects.html`, `out-of-series.html` - one page per series, each with its own banner
+- `components.html`, `out-of-series.html` - one page per series, each with its own banner (`impossible-objects.html` only redirects to Out of series, where those works now live)
 - `parallax.js` - parallax on banners and the top slider
 - `info.html` - info page
 - `assets/img/` - all images

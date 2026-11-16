@@ -65,20 +65,6 @@ const WORKS = [
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/mnhAo3ao" },
     print: { url: "https://katrinbarshe.printful.me/product/capacitor-framed-print-with-mat" } },
 
-  // ---------- Impossible objects ----------
-  { series: "impossible", title: "IO #1. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-1.jpg",
-    gallery: [IMG + "io-1.jpg", G + "io-1-1.jpg", G + "io-1-2.jpg", G + "io-1-3.jpg"],
-    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/lIkfpPXD" }, print: { url: "" } },
-  { series: "impossible", title: "IO #2. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-2.jpg",
-    gallery: [IMG + "io-2.jpg", G + "io-2-1.jpg", G + "io-2-2.jpg", G + "io-2-3.jpg"],
-    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/yzrnuUOZ" }, print: { url: "" } },
-  { series: "impossible", title: "IO #3. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-3.jpg",
-    gallery: [IMG + "io-3.jpg", G + "io-3-1.jpg", G + "io-3-2.jpg", G + "io-3-3.jpg"],
-    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/pGbr3cCM" }, print: { url: "" } },
-  { series: "impossible", title: "IO #4. Arrows", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-4.jpg",
-    gallery: [IMG + "io-4.jpg", G + "io-4-1.jpg", G + "io-4-2.jpg", G + "io-4-3.jpg"],
-    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/BFWb4IzH" }, print: { url: "" } },
-
   // ---------- Out of series ----------
   { series: "other", title: "1130 Sunny Point Dr", size: "18\"x18\", Canvas Board, Acrylic/Oil", date: "2024", img: IMG + "sunny-point.jpg",
     original: { status: "available", price: "$720", buyUrl: "https://square.link/u/EV2wDGtE" }, print: { options: [
@@ -95,4 +81,18 @@ const WORKS = [
     original: { status: "available", price: "$780", buyUrl: "https://square.link/u/0IDRuLFX" }, print: { options: [
       { label: "Canvas print", price: "$149", url: "https://katrinbarshe.printful.me/product/the-heels-canvas-print-18x24" },
       { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/the-heels-framed-print-16x20" } ] } },
+
+  // Impossible objects (shown at the end of Out of series)
+  { series: "other", title: "IO #1. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-1.jpg",
+    gallery: [IMG + "io-1.jpg", G + "io-1-1.jpg", G + "io-1-2.jpg", G + "io-1-3.jpg"],
+    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/lIkfpPXD" }, print: { url: "" } },
+  { series: "other", title: "IO #2. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-2.jpg",
+    gallery: [IMG + "io-2.jpg", G + "io-2-1.jpg", G + "io-2-2.jpg", G + "io-2-3.jpg"],
+    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/yzrnuUOZ" }, print: { url: "" } },
+  { series: "other", title: "IO #3. Penrose Triangle", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-3.jpg",
+    gallery: [IMG + "io-3.jpg", G + "io-3-1.jpg", G + "io-3-2.jpg", G + "io-3-3.jpg"],
+    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/pGbr3cCM" }, print: { url: "" } },
+  { series: "other", title: "IO #4. Arrows", size: "6\"x6\", Canvas Board, Acrylic", date: "2023", img: IMG + "io-4.jpg",
+    gallery: [IMG + "io-4.jpg", G + "io-4-1.jpg", G + "io-4-2.jpg", G + "io-4-3.jpg"],
+    original: { status: "available", price: "$150", buyUrl: "https://square.link/u/BFWb4IzH" }, print: { url: "" } },
 ];

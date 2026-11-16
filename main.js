@@ -19,22 +19,22 @@
 
     if (o.status === "sold") price = '<p class="work-price">Original sold</p>';
     if (o.status === "available" && o.price) {
-      buttons += '<a class="pill" href="' + esc(o.buyUrl || mail(w.title, "Buy original")) + '"' + (o.buyUrl ? ' target="_blank" rel="noopener"' : '') + '>Buy original</a>';
+      buttons += '<a class="text-link" href="' + esc(o.buyUrl || mail(w.title, "Buy original")) + '"' + (o.buyUrl ? ' target="_blank" rel="noopener"' : '') + '>Buy original</a>';
     }
-    if (p.url) buttons = '<a class="pill" href="' + esc(p.url) + '" target="_blank" rel="noopener">Buy print</a>' + buttons;
-    // Several print options (e.g. canvas and framed): one button each, with its price.
-    if (p.options && p.options.length) {
-      buttons += p.options.map(function (x) {
-        return '<a class="pill" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.label) + "</a>";
-      }).join("");
-    }
-    if (!buttons) buttons = '<a class="pill" href="' + esc(mail(w.title, "About the painting")) + '">Ask about this work</a>';
+    // All actions are quiet text links on one line: original first, then prints.
+    let prints = "";
+    const link = function (url, label) {
+      return '<a class="text-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>";
+    };
+    if (p.url) prints += link(p.url, "Buy print");
+    if (p.options && p.options.length) prints += p.options.map(function (x) { return link(x.url, x.label); }).join("");
+    if (!buttons && !prints) buttons = '<a class="text-link" href="' + esc(mail(w.title, "About the painting")) + '">Ask about this work</a>';
 
     return (
       '<h3 class="work-title">' + esc(w.title) + "</h3>" +
       '<p class="work-meta">' + esc(w.size) + "<br>" + esc(w.date) + "</p>" +
       price +
-      '<p class="work-actions">' + buttons + "</p>"
+      '<p class="work-prints">' + buttons + prints + "</p>"
     );
   }
 
