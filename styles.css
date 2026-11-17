@@ -201,7 +201,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* ---------- light pages (Components): the watercolors sit on white paper ---------- */
 
-.light { --fg: #1f1f1f; --muted: #6d6d6d; --rule: rgba(0, 0, 0, 0.14); background: #fff; color: var(--fg); }
+.light { --fg: #1f1f1f; --muted: #6d6d6d; --rule: rgba(0, 0, 0, 0.14); background: #f3f3f2; color: var(--fg); }
 
 /* ---------- clickable paintings ---------- */
 

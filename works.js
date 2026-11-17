@@ -62,14 +62,16 @@ const WORKS = [
   // ---------- Components ----------
   // Connection: size 36 × 36 to be confirmed. Price: (36 + 36) x $20 + frame. No Square link yet, so it shows "Ask about this work".
   { series: "components", title: "Connection", subtitle: "USB-C 3.2 Gen 2 (10 Gbps) Cable", size: "Acrylic on polyester banner fabric, framed, 36 × 36 in (91 × 91 cm)", date: "May 2026", img: IMG + "connection.jpg",
-    original: { status: "inquire", price: "$1,600" }, print: { url: "" } },
-  { series: "components", title: "LED", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "led.jpg",
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/YTwLaIDP" }, print: { options: [
+      { label: "Canvas print", price: "$129", url: "https://katrinbarshe.printful.me/product/connection-canvas-print-16x16" },
+      { label: "Framed print", price: "$89", url: "https://katrinbarshe.printful.me/product/connection-framed-print-16x16" }] } },
+  { series: "components", title: "LED", subtitle: "KY-009 RGB LED Module (5050 SMD)", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "led.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/4sa7e81K" },
     print: { options: [{ label: "Framed print", price: "$79", url: "https://katrinbarshe.printful.me/product/rgb-led-framed-print-with-mat" }] } },
-  { series: "components", title: "Resistor", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "resistor.jpg",
+  { series: "components", title: "Resistor", subtitle: "10 kΩ 1/4 W Carbon Film Resistor", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "resistor.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/MQieKmev" },
     print: { options: [{ label: "Framed print", price: "$79", url: "https://katrinbarshe.printful.me/product/resistor-framed-print-with-mat" }] } },
-  { series: "components", title: "Capacitor", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "capacitor.jpg",
+  { series: "components", title: "Capacitor", subtitle: "68 nF (683) 50 V Ceramic Capacitor", size: "Watercolor on paper, 9 × 12 in (23 × 30 cm)", date: "2024", img: IMG + "capacitor.jpg",
     original: { status: "available", price: "$250", buyUrl: "https://square.link/u/mnhAo3ao" },
     print: { options: [{ label: "Framed print", price: "$79", url: "https://katrinbarshe.printful.me/product/capacitor-framed-print-with-mat" }] } },
 
@@ -79,7 +81,8 @@ const WORKS = [
       { label: "Canvas print", price: "$129", url: "https://katrinbarshe.printful.me/product/1130-sunny-point-dr-canvas-print-16x16" },
       { label: "Framed print", price: "$89", url: "https://katrinbarshe.printful.me/product/1130-sunny-point-dr-framed-print-16x16" } ] } },
   { series: "other", title: "Under Pineda Cswy Bridge", size: "Acrylic and oil on canvas board, 18 × 18 in (46 × 46 cm)", date: "November 2024", img: IMG + "pineda-bridge.jpg",
-    original: { status: "available", price: "$720", buyUrl: "https://square.link/u/eEYAmWm0" }, print: { options: [{ label: "Canvas print", price: "$129", url: "https://katrinbarshe.printful.me/product/under-pineda-cswy-bridge-canvas-print-16x16" }] } },
+    original: { status: "available", price: "$720", buyUrl: "https://square.link/u/eEYAmWm0" }, print: { options: [{ label: "Canvas print", price: "$129", url: "https://katrinbarshe.printful.me/product/under-pineda-cswy-bridge-canvas-print-16x16" },
+      { label: "Framed print", price: "$89", url: "https://katrinbarshe.printful.me/product/under-pineda-cswy-bridge-framed-print-16x16" }] } },
   { series: "other", title: "The Shell", size: "Texture paste and acrylic on canvas board, 18 × 18 in (46 × 46 cm)", date: "2024", img: IMG + "the-shell.jpg",
     original: { status: "available", price: "$720", buyUrl: "https://square.link/u/8K3Lxwgl" }, print: { url: "" } },
   { series: "other", title: "The Heels", size: "Acrylic and oil on canvas board, 18 × 24 in (46 × 61 cm)", date: "2024", img: IMG + "the-heels.jpg",
@@ -89,7 +92,8 @@ const WORKS = [
       { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/the-heels-framed-print-16x20" } ] } },
   { series: "other", title: "Brevard County", size: "Acrylic on canvas board, 48 × 30 in (122 × 76 cm)", date: "2024", img: IMG + "brevard-county.jpg",
     gallery: [G + "brevard-county-1.jpg", G + "brevard-county-2.jpg", G + "brevard-county-3.jpg", G + "brevard-county-4.jpg", G + "brevard-county-5.jpg"],
-    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/C7sdSsbN" }, print: { options: [{ label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/brevard-county-canvas-print-24x36" }] } },
+    original: { status: "available", price: "$1,600", buyUrl: "https://square.link/u/C7sdSsbN" }, print: { options: [{ label: "Canvas print", price: "$195", url: "https://katrinbarshe.printful.me/product/brevard-county-canvas-print-24x36" },
+      { label: "Framed print", price: "$119", url: "https://katrinbarshe.printful.me/product/brevard-county-framed-print-16x20" }] } },
 
   // ---------- Impossible objects (their own group at the end of Other works) ----------
   { series: "io", title: "IO #1. Penrose Triangle", size: "Acrylic on canvas board, 6 × 6 in (15 × 15 cm)", date: "2023", img: IMG + "io-1.jpg",
