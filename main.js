@@ -20,12 +20,12 @@
     return WORKS.find(w => slug(w) === s);
   }
 
-  // One buy action: a quiet text link, with the price next to it when there is one.
+  // One buy action: a quiet text link. Prices are not shown on the site;
+  // they are on the payment and print shop pages (prices in works.js are kept for reference).
   function action(url, label, price, sameTab) {
     return (
       '<span class="action">' +
         '<a class="text-link" href="' + esc(url) + '"' + (sameTab ? "" : ' target="_blank" rel="noopener"') + ">" + esc(label) + "</a>" +
-        (price ? '<span class="price">' + esc(price) + "</span>" : "") +
       "</span>"
     );
   }
@@ -55,6 +55,7 @@
 
     return (
       '<h3 class="work-title">' + esc(w.title) + "</h3>" +
+      (w.subtitle ? '<p class="work-subtitle">' + esc(w.subtitle) + "</p>" : "") +
       '<p class="work-meta">' + meta(w) + "</p>" +
       '<p class="work-actions">' + actions + "</p>"
     );
@@ -173,6 +174,17 @@
     const dx = e.changedTouches[0].clientX - x0; x0 = null;
     if (Math.abs(dx) > 40 && pics.length > 1) go(dx < 0 ? 1 : -1);
   });
+
+  // The cursor as a small lamp over a painting (the light itself is drawn in styles.css).
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.addEventListener("pointermove", e => {
+      const b = e.target.closest && e.target.closest(".pic");
+      if (!b) return;
+      const r = b.getBoundingClientRect();
+      b.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      b.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  }
 
   // A link to one painting (for example katrinbarshe.com/#shell-13) scrolls to it and opens it.
   const first = bySlug(decodeURIComponent(location.hash.slice(1)));

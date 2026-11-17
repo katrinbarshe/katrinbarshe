@@ -19,10 +19,33 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Each painting of the series comes out of the dark when it scrolls into view,
+    // as if a lamp is switched on in front of it (see "lamp" in styles.css).
+    if (window.CSS && CSS.registerProperty && "IntersectionObserver" in window &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("lit");
+      addEventListener("DOMContentLoaded", function () {
+        var seen = new IntersectionObserver(function (list) {
+          list.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var im = e.target;
+            seen.unobserve(im);
+            var on = function () { im.classList.add("is-on"); };
+            if (im.complete) on(); else { im.addEventListener("load", on); im.addEventListener("error", on); }
+          });
+        }, { threshold: 0.25 });
+        var watch = function () {
+          document.querySelectorAll("#shells .pic img").forEach(function (im) { seen.observe(im); });
+        };
+        setTimeout(watch, 0);
+      });
+    }
+  </script>
 </head>
-<body>
+<body id="top">
 
-<header class="topbar" id="top">
+<header class="topbar">
   <a class="brand" href="index.html"><img src="assets/img/favicon.png" alt="" width="30" height="30"><span>Katrin Barshe</span></a>
   <nav class="navbar" aria-label="Main">
     <a href="index.html" aria-current="page">Shells</a>
@@ -36,30 +59,15 @@
   <section class="hero">
     <div class="hero-text">
       <h1 class="display">The Shell</h1>
-      <p class="hero-sub">Fossil shells from Florida</p>
-      <a class="text-link" href="#shells">See the paintings</a>
-    </div>
-    <figure class="hero-work">
-      <div class="dim-frame">
-        <button type="button" class="pic" data-open="shell-12" aria-label="View Shell #12">
-          <img src="assets/img/shell-12.jpg" width="620" height="1024" alt="Shell #12: a pale spiral shell in front of a black circle on an orange ground">
-        </button>
-        <span class="dim dim-h" aria-hidden="true"><i>48 in</i></span>
-        <span class="dim dim-w" aria-hidden="true"><i>30 in</i></span>
+      <div class="prose">
+        <p>These shells are fossils. They are millions of years old, traces of ancient seas. I find each one myself, here in Florida.</p>
+        <p>Time revealed their character. A shell holds the mathematical harmony of Fibonacci and the precision and logic of architecture.</p>
+        <p>A shell also reflects human nature. Feminine curves and phallic forms merge in it. It is fragile and resilient at the same time. It shows how time passes, and it is still elegant after millions of years.</p>
+        <p>I do not offer direct hints, only space for contemplation. Each painting carries its own emotion, and each viewer finds something personal in it.</p>
+        <p>Each original painting from this series comes with the real shell it was painted from.</p>
       </div>
-      <figcaption>Shell #12, 2024</figcaption>
-    </figure>
-  </section>
-
-  <section class="statement" aria-label="About the series">
-    <img src="assets/img/shell-intro.png" width="1056" height="910" alt="A fossil shell in a display frame">
-    <div class="prose">
-      <p>These shells are fossils. They are millions of years old, traces of ancient seas. I find each one myself, here in Florida.</p>
-      <p>Time revealed their character. A shell holds the mathematical harmony of Fibonacci and the precision and logic of architecture.</p>
-      <p>A shell also reflects human nature. Feminine curves and phallic forms merge in it. It is fragile and resilient at the same time. It shows how time passes, and it is still elegant after millions of years.</p>
-      <p>I do not offer direct hints, only space for contemplation. Each painting carries its own emotion, and each viewer finds something personal in it.</p>
-      <p>Each original painting from this series comes with the real shell it was painted from.</p>
     </div>
+    <img class="hero-shell" src="assets/img/shell-intro.png" width="1056" height="910" alt="A fossil shell in a display frame">
   </section>
 
   <section class="works-wrap" id="shells" aria-label="Paintings">
@@ -77,8 +85,6 @@
 <footer class="footer">
   <p>© 2022-2026 Katrin Barshe</p>
   <div class="footer-links">
-    <a href="buying.html">Buying</a>
-    <a href="mailto:katrinbarshe@gmail.com">katrinbarshe@gmail.com</a>
     <a href="#top" class="back-to-top" aria-label="Back to top">&#8593;</a>
   </div>
 </footer>

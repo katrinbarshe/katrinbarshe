@@ -11,7 +11,6 @@ Plain HTML/CSS/JS site, no build step. Preview with Live Server in VS Code
 - `out-of-series.html` - "Other works" in the menu; Impossible objects are a group at the end
   (`impossible-objects.html` only redirects there)
 - `info.html` - about the artist, with the map of Florida
-- `buying.html` - how buying and shipping work (linked from the footer)
 
 ## Files
 
@@ -40,7 +39,9 @@ Every work has its own address made from its image name:
 `katrinbarshe.com/#shell-13`, `katrinbarshe.com/components.html#led`,
 `katrinbarshe.com/out-of-series.html#io-1`. The link scrolls to the painting and opens it.
 
-## The first screen
+## The home page
 
-The painting on the first screen is set in `index.html` (`data-open="shell-12"` and the
-image next to it). The thin lines with "48 in" and "30 in" show the real size of the painting.
+The home page starts with the title The Shell and the text about the series.
+Each painting of the series comes out of the dark when it scrolls into view, as if a lamp
+is switched on ("lamp" in `styles.css`). On a computer the cursor also works like a small
+lamp over any painting on the dark pages.
