@@ -1,28 +1,46 @@
 # katrinbarshe.com
 
-Plain HTML/CSS/JS site, no build step. Open `index.html` in a browser to preview.
-Design copies the old Strikingly site.
+Plain HTML/CSS/JS site, no build step. Preview with Live Server in VS Code
+(or open `index.html` in a browser).
+
+## Pages
+
+- `index.html` - home page = The Shell series: one painting large on the first screen,
+  the text about the series, the paintings in two columns, photos of a gallery interior
+- `components.html` - Components watercolors on a white page
+- `out-of-series.html` - "Other works" in the menu; Impossible objects are a group at the end
+  (`impossible-objects.html` only redirects there)
+- `info.html` - about the artist, with the map of Florida
+- `buying.html` - how buying and shipping work (linked from the footer)
 
 ## Files
 
-- `index.html` - home page = Shells series (gallery slider, The Shell intro, shells)
-- `components.html`, `out-of-series.html` - one page per series, each with its own banner (`impossible-objects.html` only redirects to Out of series, where those works now live)
-- `parallax.js` - parallax on banners and the top slider
-- `info.html` - info page
-- `assets/img/` - all images
-- `works.js` — **all artworks**: titles, sizes, images, prices, buy links. Edit this file to change prices or mark a work as sold.
-- `main.js` — builds the artwork cards from `works.js`. Usually no need to touch.
-- `styles.css` — design.
+- `works.js` - **all artworks**: titles, sizes, images, prices, buy links.
+  Edit this file to change prices or mark a work as sold.
+- `main.js` - builds the artwork blocks from `works.js`, opens a painting large on click.
+  Usually no need to touch.
+- `parallax.js` - moves the photo band on Other works while the page scrolls
+- `styles.css` - design: colors, type sizes, layout
+- `assets/img/` - all images; `assets/img/og-shells.jpg` is the picture shown when a link
+  to the site is shared in social networks or messengers
+- `assets/fonts/` - the Barlow typeface (free, SIL Open Font License)
 
 ## Common edits (all in works.js)
 
-- Set a price for an original: `original: { status: "available", price: "$1,200", buyUrl: "" }`
-- Mark as sold: `original: { status: "sold", ... }`
+- Change a price: `original: { status: "available", price: "$1,200", buyUrl: "..." }`
+- Mark as sold: `original: { status: "sold", ... }` (shows "Original sold")
 - No price yet: `status: "inquire"` shows "Ask about this work" (opens an email).
-- Add a Square payment link for an original: put it in `buyUrl`.
-- Add a print: `print: { url: "https://katrinbarshe.printful.me/product/...", from: "$79" }`
+- Square payment link for an original: put it in `buyUrl`.
+- Add a print: `print: { url: "https://katrinbarshe.printful.me/product/..." }`
+  or several: `print: { options: [{ label: "Canvas print", price: "$195", url: "..." }] }`
 
-## Still to do
+## Link to one painting
 
-- Check prices marked TODO in works.js.
-- Publish on GitHub Pages and point katrinbarshe.com to it in GoDaddy.
+Every work has its own address made from its image name:
+`katrinbarshe.com/#shell-13`, `katrinbarshe.com/components.html#led`,
+`katrinbarshe.com/out-of-series.html#io-1`. The link scrolls to the painting and opens it.
+
+## The first screen
+
+The painting on the first screen is set in `index.html` (`data-open="shell-12"` and the
+image next to it). The thin lines with "48 in" and "30 in" show the real size of the painting.

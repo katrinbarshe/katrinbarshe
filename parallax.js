@@ -27,7 +27,7 @@
   // Top slider: the photos slide down slower than the page as you scroll.
   // A softer speed here keeps the photo framing close to the original.
   const SLIDER_SPEED = 0.25;
-  const slider = document.querySelector(".slider:not(.fit-slider)");
+  const slider = document.querySelector(".slider:not(.fit-slider):not(.plain)");
   if (slider) {
     const imgs = slider.querySelectorAll(".slide-img");
     let start = 0;

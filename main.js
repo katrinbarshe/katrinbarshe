@@ -1,4 +1,5 @@
-// Builds the artwork blocks from works.js and runs the top slider.
+// Builds the artwork blocks from works.js, runs the photo bands with arrows,
+// and opens a painting large when it is clicked.
 // You normally do not need to edit this file.
 (function () {
   const EMAIL = "katrinbarshe@gmail.com";
@@ -11,30 +12,51 @@
     return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(what + ": " + title);
   }
 
+  // Each work's own address: its image name without the folder and ".jpg" (shell-13, io-1 ...)
+  function slug(w) {
+    return w.img.split("/").pop().replace(/\.[a-z]+$/i, "");
+  }
+  function bySlug(s) {
+    return WORKS.find(w => slug(w) === s);
+  }
+
+  // One buy action: a quiet text link, with the price next to it when there is one.
+  function action(url, label, price, sameTab) {
+    return (
+      '<span class="action">' +
+        '<a class="text-link" href="' + esc(url) + '"' + (sameTab ? "" : ' target="_blank" rel="noopener"') + ">" + esc(label) + "</a>" +
+        (price ? '<span class="price">' + esc(price) + "</span>" : "") +
+      "</span>"
+    );
+  }
+
+  // Lines under the title: technique, size, date. The size never breaks in the middle.
+  function meta(w) {
+    const cut = w.size.lastIndexOf(", ");
+    const lines = cut > 0 ? [w.size.slice(0, cut), w.size.slice(cut + 2)] : [w.size];
+    lines.push(w.date);
+    return lines.map((x, k) => (k === 1 ? esc(x).replace(/ /g, "&nbsp;") : esc(x))).join("<br>");
+  }
+
   function info(w) {
     const o = w.original || {};
     const p = w.print || {};
-    let price = "";
-    let buttons = "";
+    let actions = "";
 
-    if (o.status === "sold") price = '<p class="work-price">Original sold</p>';
+    if (o.status === "sold") actions += '<span class="action">Original sold</span>';
     if (o.status === "available" && o.price) {
-      buttons += '<a class="text-link" href="' + esc(o.buyUrl || mail(w.title, "Buy original")) + '"' + (o.buyUrl ? ' target="_blank" rel="noopener"' : '') + '>Buy original</a>';
+      actions += o.buyUrl
+        ? action(o.buyUrl, "Buy original", o.price)
+        : action(mail(w.title, "Buy original"), "Buy original", o.price, true);
     }
-    // All actions are quiet text links on one line: original first, then prints.
-    let prints = "";
-    const link = function (url, label) {
-      return '<a class="text-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>";
-    };
-    if (p.url) prints += link(p.url, "Buy print");
-    if (p.options && p.options.length) prints += p.options.map(function (x) { return link(x.url, x.label); }).join("");
-    if (!buttons && !prints) buttons = '<a class="text-link" href="' + esc(mail(w.title, "About the painting")) + '">Ask about this work</a>';
+    if (p.url) actions += action(p.url, "Buy print", p.from);
+    if (p.options && p.options.length) actions += p.options.map(x => action(x.url, x.label, x.price)).join("");
+    if (!actions) actions = action(mail(w.title, "About the painting"), "Ask about this work", "", true);
 
     return (
       '<h3 class="work-title">' + esc(w.title) + "</h3>" +
-      '<p class="work-meta">' + esc(w.size) + "<br>" + esc(w.date) + "</p>" +
-      price +
-      '<p class="work-prints">' + buttons + prints + "</p>"
+      '<p class="work-meta">' + meta(w) + "</p>" +
+      '<p class="work-actions">' + actions + "</p>"
     );
   }
 
@@ -42,28 +64,16 @@
   function pic(w) {
     const n = (w.gallery || []).length;
     return (
-      '<button type="button" class="pic" data-work="' + WORKS.indexOf(w) + '" aria-label="View ' + esc(w.title) + (n > 1 ? " (" + n + " photos)" : "") + '">' +
+      '<button type="button" class="pic" data-open="' + esc(slug(w)) + '" aria-label="View ' + esc(w.title) + (n > 1 ? " (" + n + " photos)" : "") + '">' +
         '<img loading="lazy" src="' + esc(w.img) + '" alt="' + esc(w.title) + '">' +
         (n > 1 ? '<span class="pic-count" aria-hidden="true">1 / ' + n + "</span>" : "") +
       "</button>"
     );
   }
 
-  // Shells and Components: image and text side by side, sides alternate.
-  function row(w, i) {
-    const side = i % 2 === 0 ? "img-left" : "img-right";
-    return (
-      '<article class="row ' + side + '">' +
-        '<div class="row-img">' + pic(w) + '</div>' +
-        '<div class="row-text">' + info(w) + "</div>" +
-      "</article>"
-    );
-  }
-
-  // Impossible objects and Out of series: two columns, caption centered under the image.
   function tile(w) {
     return (
-      '<article class="tile">' +
+      '<article class="tile" id="' + esc(slug(w)) + '">' +
         pic(w) +
         '<div class="tile-text">' + info(w) + "</div>" +
       "</article>"
@@ -72,14 +82,13 @@
 
   document.querySelectorAll("[data-series]").forEach(el => {
     const s = el.getAttribute("data-series");
-    const list = WORKS.filter(w => w.series === s);
-    el.innerHTML = list.map(el.dataset.layout === "rows" ? row : tile).join("");
+    el.innerHTML = WORKS.filter(w => w.series === s).map(tile).join("");
   });
 
-  // Top slider
-  const slider = document.querySelector(".slider");
-  if (slider) {
+  // Photo bands with arrows
+  document.querySelectorAll(".slider").forEach(slider => {
     const slides = slider.querySelectorAll(".slide-img");
+    if (slides.length < 2) return;
     let i = 0;
     const show = n => {
       slides[i].classList.remove("is-on");
@@ -91,7 +100,7 @@
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setInterval(() => show(i + 1), 6000);
     }
-  }
+  });
 
   // Lightbox: click a painting to see it larger and leaf through its photos.
   const box = document.createElement("div");
@@ -107,7 +116,12 @@
   document.body.appendChild(box);
   const lbImg = box.querySelector(".lb-img");
   const lbCap = box.querySelector(".lb-cap");
-  let pics = [], at = 0, title = "", lastFocus = null;
+  let pics = [], at = 0, title = "", lastFocus = null, current = null;
+
+  // The address bar follows the open painting, so the link can be copied and shared.
+  function setHash(h) {
+    try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch (e) {}
+  }
 
   function draw() {
     lbImg.src = pics[at];
@@ -119,18 +133,28 @@
   function go(d) { at = (at + d + pics.length) % pics.length; draw(); }
   function open(w) {
     pics = (w.gallery && w.gallery.length) ? w.gallery : [w.img];
-    at = 0; title = w.title; lastFocus = document.activeElement;
+    at = 0; title = w.title; lastFocus = document.activeElement; current = w;
     draw(); box.hidden = false; document.body.classList.add("lb-open");
     box.querySelector(".lb-close").focus();
+    setHash(slug(w));
   }
   function close() {
     box.hidden = true; document.body.classList.remove("lb-open");
-    if (lastFocus) lastFocus.focus();
+    setHash("");
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    // After a direct link the page may have moved while photos loaded: return to the painting.
+    const t = current && document.getElementById(slug(current));
+    if (t && lastFocus === document.body) {
+      const r = t.getBoundingClientRect();
+      if (r.top < 0 || r.top > window.innerHeight * 0.6) t.scrollIntoView();
+    }
   }
 
   document.addEventListener("click", e => {
-    const b = e.target.closest(".pic");
-    if (b) open(WORKS[+b.dataset.work]);
+    const b = e.target.closest("[data-open]");
+    if (!b) return;
+    const w = bySlug(b.dataset.open);
+    if (w) open(w);
   });
   box.querySelector(".lb-close").addEventListener("click", close);
   box.querySelector(".lb-prev").addEventListener("click", () => go(-1));
@@ -149,5 +173,13 @@
     const dx = e.changedTouches[0].clientX - x0; x0 = null;
     if (Math.abs(dx) > 40 && pics.length > 1) go(dx < 0 ? 1 : -1);
   });
+
+  // A link to one painting (for example katrinbarshe.com/#shell-13) scrolls to it and opens it.
+  const first = bySlug(decodeURIComponent(location.hash.slice(1)));
+  const firstTile = first && document.getElementById(slug(first));
+  if (firstTile) {
+    firstTile.scrollIntoView();
+    open(first);
+  }
 
 })();
