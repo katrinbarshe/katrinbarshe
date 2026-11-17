@@ -136,7 +136,8 @@ h1, h2, h3, p { margin: 0; }
 .hero-text { display: contents; }
 .hero-text .display { grid-column: 1 / -1; font-size: clamp(58px, 8.4vw, 124px); white-space: nowrap; margin-bottom: clamp(4px, 1vh, 12px); }
 .hero-text .prose { max-width: 56ch; }
-.hero-shell { width: 100%; max-width: 560px; justify-self: center; }
+.hero-shell { display: block; position: relative; width: 100%; max-width: 560px; justify-self: center; }
+.hero-shell img { display: block; width: 100%; height: auto; }
 
 /* The lamp: a painting comes out of the dark, the light starts at the middle
    and spreads to the edges. The small script in the head of index.html starts it
@@ -209,7 +210,8 @@ h1, h2, h3, p { margin: 0; }
 .pic img { width: 100%; }
 /* The cursor works like a small lamp: a soft light follows it over a painting (main.js). */
 @media (hover: hover) and (pointer: fine) {
-  body:not(.light) .pic::after {
+  body:not(.light) .pic::after,
+  .glow::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -219,7 +221,13 @@ h1, h2, h3, p { margin: 0; }
     opacity: 0;
     transition: opacity 0.6s ease;
   }
-  body:not(.light) .pic:hover::after { opacity: 1; }
+  body:not(.light) .pic:hover::after,
+  .glow:hover::after { opacity: 1; }
+  /* on the header photo the light falls only on the shell, not on the transparent background */
+  .hero-shell::after {
+    -webkit-mask: url("assets/img/shell-intro.png") center / 100% 100% no-repeat;
+    mask: url("assets/img/shell-intro.png") center / 100% 100% no-repeat;
+  }
 }
 .pic-count {
   position: absolute; left: 10px; bottom: 10px; padding: 3px 9px; border-radius: 12px;

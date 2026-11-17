@@ -178,7 +178,7 @@
   // The cursor as a small lamp over a painting (the light itself is drawn in styles.css).
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     document.addEventListener("pointermove", e => {
-      const b = e.target.closest && e.target.closest(".pic");
+      const b = e.target.closest && e.target.closest(".pic, .glow");
       if (!b) return;
       const r = b.getBoundingClientRect();
       b.style.setProperty("--mx", (e.clientX - r.left) + "px");
