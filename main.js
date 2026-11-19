@@ -175,6 +175,13 @@
     if (Math.abs(dx) > 40 && pics.length > 1) go(dx < 0 ? 1 : -1);
   });
 
+  // The light on a .glow photo falls only where the photo is opaque: its own picture is the mask.
+  document.querySelectorAll(".glow img").forEach(img => {
+    const setMask = () => img.parentElement.style.setProperty("--glow-mask", 'url("' + (img.currentSrc || img.src) + '")');
+    if (img.complete && img.naturalWidth) setMask();
+    img.addEventListener("load", setMask);
+  });
+
   // The cursor as a small lamp over a painting (the light itself is drawn in styles.css).
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     document.addEventListener("pointermove", e => {

@@ -135,7 +135,7 @@ h1, h2, h3, p { margin: 0; }
 /* The title runs across the page; under it the text and the photo of the real shell share one row. */
 .hero-text { display: contents; }
 .hero-text .display { grid-column: 1 / -1; font-size: clamp(58px, 8.4vw, 124px); white-space: nowrap; margin-bottom: clamp(4px, 1vh, 12px); }
-.hero-text .prose { max-width: 56ch; }
+.hero-text .prose { max-width: 56ch; font-size: 16px; }
 .hero-shell { display: block; position: relative; width: 100%; max-width: 560px; justify-self: center; }
 .hero-shell img { display: block; width: 100%; height: auto; }
 
@@ -224,9 +224,10 @@ h1, h2, h3, p { margin: 0; }
   body:not(.light) .pic:hover::after,
   .glow:hover::after { opacity: 1; }
   /* on the header photo the light falls only on the shell, not on the transparent background */
+  /* the mask is the photo itself: main.js puts the current image into --glow-mask */
   .hero-shell::after {
-    -webkit-mask: url("assets/img/shell-intro.png") center / 100% 100% no-repeat;
-    mask: url("assets/img/shell-intro.png") center / 100% 100% no-repeat;
+    -webkit-mask: var(--glow-mask, none) center / 100% 100% no-repeat;
+    mask: var(--glow-mask, none) center / 100% 100% no-repeat;
   }
 }
 .pic-count {
@@ -348,7 +349,7 @@ body.lb-open { overflow: hidden; }
 /* tablets and phones: the first screen stacks, painting first */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 32px; padding-top: 36px; }
-  .hero-shell { max-width: 420px; }
+  .hero-shell { max-width: 420px; order: -1; }
 }
 
 @media (max-width: 760px) {
